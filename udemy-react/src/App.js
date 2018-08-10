@@ -37,24 +37,34 @@ class App extends Component {
 
   reset = () => {
     this.setState({
-          persons: [
-      {
-        name: 'Aidan',
-        age: 23
-      },
-      {
-        name: 'Person 2',
-        age: 33
-      },
-      {
-        name: 'Person 3',
-        age: 43
-      }
-    ]
+      persons: [
+        {name:'Aidan', age: 23},
+        {name: 'Person 2', age: 33},
+        {name: 'Person 3',age: 43}
+      ]
+    })
+  }
+
+  handleNameChange = (event) => {
+    this.setState({
+      persons: [
+        {name: 'Aidan', age: 33 },
+        {name: event.target.value, age: 33 },
+        {name: 'Person 3', age: 434 }
+      ] 
     })
   }
 
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      marginTop: '10px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
         <h1>
@@ -63,6 +73,7 @@ class App extends Component {
         <Person
           age={this.state.persons[1].age}
           name={this.state.persons[1].name}
+          changed={this.handleNameChange}
         />
         <Person
           age={this.state.persons[2].age}
@@ -75,7 +86,12 @@ class App extends Component {
         >
           Child Element
         </Person>
-        <button onClick={this.reset}>Reset Names</button>
+        <button
+          style={style}
+          onClick={this.reset}
+        >
+          Reset Names
+        </button>
       </div>
     );
   }
