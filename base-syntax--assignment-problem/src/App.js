@@ -17,20 +17,21 @@ class App extends Component {
         {
           user: 'User Name2'
         }
-      ]
-       
+      ],
+      value: ''
     }
   }
-  handleNameChange = () => {
+  handleNameChange = (event) => {
     this.setState({
       userName: [
       {
-        user: 'Changed 1'
+       user: this.state.value
       },
       {
         user: 'Changed 2'
       }
-    ]
+    ],
+    value: event.target.value
   })
 }
   render() {
@@ -39,11 +40,18 @@ class App extends Component {
     return (
       <div className="App">
           <div>
-            <UserInput />
+            <UserInput
+              handleEvent={this.handleNameChange}
+              value={this.state.value}
+            />
           </div>
           <div>
-            <UserOutput userName={this.state.userName[0].user}/>
-            <UserOutput userName={this.state.userName[1].user}/>
+            <UserOutput
+              userName={this.state.userName[0].user}
+              />
+            <UserOutput
+               userName={this.state.userName[1].user}
+              />
           </div>
         <ol>
           {/* <li>Create TWO new components: UserInput and UserOutput</li>
@@ -51,11 +59,11 @@ class App extends Component {
           <li>Output multiple UserOutput components in the App component (any paragraph texts of your choice)</li>
           <li>Pass a username (of your choice) to UserOutput via props and display it there</li>
           <li>Add state to the App component (=> the username) and pass the username to the UserOutput component</li> */}
-          <li>Add a method to manipulate the state (=> an event-handler method)</li>
-          <li>Pass the event-handler method reference to the UserInput component and bind it to the input-change event</li>
-          <li>Ensure that the new input entered by the user overwrites the old username passed to UserOutput</li>
-          <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li>
-          <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
+          {/* <li>Add a method to manipulate the state (=> an event-handler method)</li> */}
+          {/* <li>Pass the event-handler method reference to the UserInput component and bind it to the input-change event</li> */}
+          {/* <li>Ensure that the new input entered by the user overwrites the old username passed to UserOutput</li> */}
+          {/* <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li> */}
+          {/* <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li> */}
         </ol>
       </div>
     );
