@@ -1,4 +1,6 @@
+//  Packages
 import React from 'react';
+//  Styles
 import './Person.css';
 
 const person = (props) => {
@@ -15,4 +17,4 @@ const person = (props) => {
 
 };
 
-export default person;
+export default (person);

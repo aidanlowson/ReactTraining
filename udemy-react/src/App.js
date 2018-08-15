@@ -8,18 +8,9 @@ import './App.css';
 class App extends Component {
   state = {
     persons: [
-      {
-        name: 'Aidan',
-        age: 23
-      },
-      {
-        name: 'Person 2',
-        age: 33
-      },
-      {
-        name: 'Person 3',
-        age: 43
-      }
+      {name: 'Aidan',age: 23},
+      {name: 'Person 2', age: 33},
+      {name: 'Person 3', age: 43}
     ],
     showPeople: false
   }
@@ -61,12 +52,13 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       marginTop: '10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
     };
 
     let persons = null;
@@ -85,6 +77,18 @@ class App extends Component {
           })}
       </div>
       );
+
+      style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
@@ -92,6 +96,9 @@ class App extends Component {
         <h1>
           Unit Testing
         </h1>
+        <p className={classes.join(' ')}>
+          People Cards:
+        </p>
         <button
           style={style}
           onClick={this.togglePeople}
