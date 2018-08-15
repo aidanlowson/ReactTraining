@@ -1,11 +1,11 @@
 //  Packages
 import React from 'react';
 //  Styles
-import './Person.css';
+import styles from './Person.css';
 
 const person = (props) => {
   return (
-  <div className={"Person"}>
+  <div className={styles.Person}>
     <p onClick={props.click}>
     Name: {props.name} years {props.age} old
     </p>
