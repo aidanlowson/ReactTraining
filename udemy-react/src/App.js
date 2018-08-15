@@ -20,39 +20,43 @@ class App extends Component {
         name: 'Person 3',
         age: 43
       }
-    ]
+    ],
+    showPeople: false
   }
 
-  handleSwitchName = () => {
-    // console.log('Switch Button Clicked');
-    this.setState({
-      persons: [
-        {name: 'Aidan', age: 33 },
-        {name: 'Person 2 Updated', age: 33 },
-        {name: 'Person 3', age: 434 }
-      ] 
-    })
-    return
+  handleNameChange = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // const person = Object.assign({}, this.state.persons[person])
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons })
   }
 
-  reset = () => {
+  togglePeople = () => {
+    const doesShow = this.state.showPeople;
     this.setState({
-      persons: [
-        {name:'Aidan', age: 23},
-        {name: 'Person 2', age: 33},
-        {name: 'Person 3',age: 43}
-      ]
+      showPeople: !doesShow
     })
   }
-
-  handleNameChange = (event) => {
+  
+  handleDeletePerson = (personIndex) => {
+    // const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
     this.setState({
-      persons: [
-        {name: 'Aidan', age: 33 },
-        {name: event.target.value, age: 33 },
-        {name: 'Person 3', age: 434 }
-      ] 
-    })
+      persons: persons
+    });
   }
 
   render() {
@@ -65,33 +69,36 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    let persons = null;
+
+    if (this.state.showPeople) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return <Person
+              click={() => this.handleDeletePerson(index)}
+              name={person.name}
+              age={person.age}
+              key={person.id}
+              changed={(event) => this.handleNameChange(event, person.id)}
+            />
+          })}
+      </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>
-          React App
+          Unit Testing
         </h1>
-        <Person
-          age={this.state.persons[1].age}
-          name={this.state.persons[1].name}
-          changed={this.handleNameChange}
-        />
-        <Person
-          age={this.state.persons[2].age}
-          name={this.state.persons[2].name}
-        />
-        <Person
-          age={this.state.persons[0].age}
-          name={this.state.persons[0].name}
-          click={this.handleSwitchName}
-        >
-          Child Element
-        </Person>
         <button
           style={style}
-          onClick={this.reset}
+          onClick={this.togglePeople}
         >
-          Reset Names
+          Show People Cards
         </button>
+       {persons}
       </div>
     );
   }

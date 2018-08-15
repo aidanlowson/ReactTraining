@@ -11,12 +11,12 @@ class App extends Component {
     super(props);
     this.state = {
       userName: 'Super Aidan',
-      value: 'Default Name'
+      currentValue: 'Default Name'
     }
   }
   handleNameChange = (event) => {
     this.setState({
-    value: event.target.value
+    currentValue: event.target.value
   })
 }
   render() {
@@ -27,12 +27,12 @@ class App extends Component {
           <div>
             <UserInput
               handleEvent={this.handleNameChange}
-              value={this.state.value}
+              currentValue={this.state.currentValue}
             />
           </div>
           <div>
             <UserOutput
-              userName={this.state.value}
+              userName={this.state.currentValue}
               />
             <UserOutput
                userName={this.state.userName}

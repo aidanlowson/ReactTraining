@@ -8,7 +8,7 @@ const UserInput = (props) => {
   return (
     <div className="inputWrapepr">
       <input type="text"
-       value={props.value} 
+       value={props.currentValue} 
        onChange={props.handleEvent}
        style={inputStyle}
       />
