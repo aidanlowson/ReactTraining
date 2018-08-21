@@ -33,6 +33,7 @@ const cockpit = (props) => {
     >
       Show People Cards
     </button>
+    <button onClick={props.login}>Log In</button>
   </div>
   );
 }

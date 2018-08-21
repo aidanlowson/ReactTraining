@@ -13,7 +13,8 @@ class App extends PureComponent {
       {id: 2, name: 'Artorius', age: 33},
       {id: 3, name: 'Manus', age: 120}
     ],
-    showPeople: false
+    showPeople: false,
+    authenticated: false
   }
 
   handleNameChange = (event, id) => {
@@ -48,12 +49,23 @@ class App extends PureComponent {
     });
   }
 
+  handleLogin = () => {
+    this.setState({
+      authenticated: true,
+    })
+  }
+
+  getDerivedStateFromProps(nextProps, prevState) {
+
+  }
+
   render() {
     let persons = null;
 
     if (this.state.showPeople) {
       persons = (
           <Persons
+            isAuthenticated={this.state.authenticated}
             persons={this.state.persons}
             clicked={this.handleDeletePerson}
             changed={this.handleNameChange}
@@ -74,6 +86,7 @@ class App extends PureComponent {
           showPerson={this.state.showPeople}
           persons={this.state.persons}
           clicked={this.togglePeople}
+          login={this.handleLogin}
         />
         {persons}
       </div>
