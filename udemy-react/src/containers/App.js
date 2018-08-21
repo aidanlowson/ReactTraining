@@ -54,9 +54,14 @@ class App extends PureComponent {
       authenticated: true,
     })
   }
-
-  getDerivedStateFromProps(nextProps, prevState) {
-
+  //  Replaces component will receive props
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("[App.js] Inside getDerivedStateFromProps", nextProps, prevState);
+    return prevState;
+  }
+  //  Replaces component will mount
+  getSnapshotBeforeUpdate() {
+    console.log("[App.js] Inside getSnapshotBeforeUpdate");
   }
 
   render() {

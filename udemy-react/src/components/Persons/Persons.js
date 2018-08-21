@@ -20,8 +20,8 @@ class Persons extends React.Component {
     return (
       <div className={styles.Person}>
       
-        { 
-         this.props.isAuthenticated ? 'Authenticated' : null 
+        {
+          this.props.isAuthenticated ? 'Authenticated' : null 
         }
             
         <p onClick={this.props.click}>
