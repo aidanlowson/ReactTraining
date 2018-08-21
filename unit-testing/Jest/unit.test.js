@@ -12,7 +12,6 @@ test('Truthy Test', () => {
   expect(n).toBeDefined();
   expect(n).toBeFalsy();
   expect(n).not.toBeTruthy();
-  expect(n).toBeFalsy();
 })
 
 //  Comparing Numbers
