@@ -22,7 +22,7 @@ const cockpit = (props) => {
   return (
   <div className={style.Cockpit}>
     <h1>
-      Unit Testing
+      Unit Testing tet
     </h1>
     <p className={classes.join(' ')}>
       People Cards:
