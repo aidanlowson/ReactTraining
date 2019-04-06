@@ -18,7 +18,7 @@ const cockpit = (props) => {
   if (props.persons.length <= 1) {
     classes.push(style.bold);
   }
-
+  const buttonText = props.showPerson ? "Hide People Cards" : "Show People Cards"
   return (
   <div className={style.Cockpit}>
     <h1>
@@ -31,7 +31,7 @@ const cockpit = (props) => {
       className={btnClass}
       onClick={props.clicked}
     >
-      Show People Cards
+      {buttonText}
     </button>
     <button onClick={props.login}>Log In</button>
   </div>
