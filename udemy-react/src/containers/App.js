@@ -80,13 +80,13 @@ class App extends PureComponent {
 
     return (
       <div className={styles.App}>
-      <button
+      {/* <button
         onClick={() => {this.setState({
           showPeople: true
         })}}
       >
         Show People
-      </button>
+      </button> */}
         <Cockpit
           showPerson={this.state.showPeople}
           persons={this.state.persons}
